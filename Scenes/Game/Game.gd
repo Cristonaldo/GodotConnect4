@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-onready var GameBoard = get_node("Board")
+@onready var GameBoard = get_node("Board")
 
 
 # Called when the node enters the scene tree for the first time.

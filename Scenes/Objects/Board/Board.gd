@@ -7,13 +7,16 @@ signal Stalemate
 
 
 # Declare member variables here. Examples:
-onready var Columns_node = get_node("Columns")
-onready var grid = get_node("Grid")
+@onready var Columns_node = get_node("Columns")
+@onready var grid = get_node("Grid")
 
-onready var P1P = preload("res://Scenes/Objects/Board/Player_1_Circle.tscn")
-onready var P2P = preload("res://Scenes/Objects/Board/Player_2_Circle.tscn")
+@onready var P1P = load("res://Scenes/Objects/Board/Player_1_Circle.tscn")
+@onready var P2P = load("res://Scenes/Objects/Board/Player_2_Circle.tscn")
 
-var player_turn = 1
+@export var numberofpucksperturn: int = 1
+@onready var pucksplayed: int=0
+
+@onready var player_turn = 1
 
 var Column_1 = [0,0,0,0,0,0]
 var Column_2 = [0,0,0,0,0,0]
@@ -41,447 +44,447 @@ func fill_spot(Column, Puck):
 	
 	match Column:
 		1:
-			for i in range(Column_1.size()):
-				if Column_1[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_1/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_1[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_1.size()):
+					if Column_1[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_1/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_1[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		2:
-			for i in range(Column_2.size()):
-				if Column_2[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_2/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_2[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_2.size()):
+					if Column_2[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_2/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_2[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		3:
-			for i in range(Column_3.size()):
-				if Column_3[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_3/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_3[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_3.size()):
+					if Column_3[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_3/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_3[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		4:
-			for i in range(Column_4.size()):
-				if Column_4[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_4/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_4[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_4.size()):
+					if Column_4[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_4/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_4[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		5:
-			for i in range(Column_5.size()):
-				if Column_5[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_5/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_5[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_5.size()):
+					if Column_5[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_5/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_5[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		6:
-			for i in range(Column_6.size()):
-				if Column_6[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_6/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_6[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
+				for i in range(Column_6.size()):
+					if Column_6[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_6/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_6[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
 		7:
-			for i in range(Column_7.size()):
-				if Column_7[i] == 0:
-					match i:
-						0:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_1.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						1:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_2.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						2:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_3.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						3:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_4.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						4:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_5.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-						5:
-							if Puck == 1:
-								var PuckInst = P1P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-							else:
-								var PuckInst = P2P.instance()
-								PuckInst.global_position = $Grid/Grid_Row_7/Slot_6.global_position
-								get_tree().root.get_node("Game").add_child(PuckInst)
-					Column_7[i] = Puck
-					check_neighbors()
-					change_player()
-					return
-			# If no 0s are found, do nothing
-
+				for i in range(Column_7.size()):
+					if Column_7[i] == 0:
+						match i:
+							0:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_1.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							1:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_2.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							2:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_3.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							3:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_4.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							4:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_5.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+							5:
+								if Puck == 1:
+									var PuckInst = P1P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+								else:
+									var PuckInst = P2P.instantiate()
+									PuckInst.global_position = $Grid/Grid_Row_7/Slot_6.global_position
+									get_tree().root.get_node("Game").add_child(PuckInst)
+						Column_7[i] = Puck
+						check_neighbors()
+						break
+				# If no 0s are found, do nothing
+	pucksplayed=pucksplayed+1
+	print(pucksplayed)
+	if pucksplayed<numberofpucksperturn:
+		return
+	else:
+		change_player()
+		
+		
 
 
 
@@ -564,8 +567,10 @@ func stalemate():
 func change_player():
 	if player_turn == 1:
 		player_turn = 2
+		pucksplayed = 0
 	else:
 		player_turn = 1
+		pucksplayed = 0
 	emit_signal("PlayerChange", player_turn)
 
 
@@ -601,4 +606,3 @@ func _on_Column_6_pressed():
 
 func _on_Column_7_pressed():
 	place_puck(7)
-

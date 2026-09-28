@@ -1,214 +1,215 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene format=3 uid="uid://bnokq3yp0fggc"]
 
-[ext_resource path="res://GimpAssets/Board.png" type="Texture" id=1]
-[ext_resource path="res://GimpAssets/RowHover.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Objects/Board/Board.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://b2shl2unioas3" path="res://GimpAssets/Board.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bxt5fxe21du5a" path="res://GimpAssets/RowHover.png" id="2"]
+[ext_resource type="Script" uid="uid://b0db8mcbkic40" path="res://Scenes/Objects/Board/Board.gd" id="3"]
 
-[node name="Board" type="Node2D"]
-script = ExtResource( 3 )
+[node name="Board" type="Node2D" unique_id=1218271872]
+script = ExtResource("3")
 
-[node name="Board_Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+[node name="Board_Sprite" type="Sprite2D" parent="." unique_id=1656891208]
+texture = ExtResource("1")
 
-[node name="Columns" type="Node2D" parent="."]
+[node name="Columns" type="Node2D" parent="." unique_id=1928592609]
 
-[node name="Column_1" type="TextureButton" parent="Columns"]
-margin_left = -316.0
-margin_top = -268.0
-margin_right = -227.0
-margin_bottom = 267.0
-texture_hover = ExtResource( 2 )
+[node name="Column_1" type="TextureButton" parent="Columns" unique_id=629711873]
+offset_left = -315.0
+offset_top = -265.0
+offset_right = -226.0
+offset_bottom = 270.0
+size_flags_horizontal = 0
+texture_hover = ExtResource("2")
 
-[node name="Column_2" type="TextureButton" parent="Columns"]
-margin_left = -225.0
-margin_top = -269.0
-margin_right = -136.0
-margin_bottom = 266.0
-texture_hover = ExtResource( 2 )
+[node name="Column_2" type="TextureButton" parent="Columns" unique_id=1354448005]
+offset_left = -224.0
+offset_top = -266.0
+offset_right = -135.0
+offset_bottom = 269.0
+texture_hover = ExtResource("2")
 
-[node name="Column_3" type="TextureButton" parent="Columns"]
-margin_left = -137.0
-margin_top = -268.0
-margin_right = -48.0
-margin_bottom = 267.0
-texture_hover = ExtResource( 2 )
+[node name="Column_3" type="TextureButton" parent="Columns" unique_id=1625482833]
+offset_left = -136.0
+offset_top = -267.0
+offset_right = -47.0
+offset_bottom = 268.0
+texture_hover = ExtResource("2")
 
-[node name="Column_4" type="TextureButton" parent="Columns"]
-margin_left = -47.0
-margin_top = -268.0
-margin_right = 42.0
-margin_bottom = 267.0
-texture_hover = ExtResource( 2 )
+[node name="Column_4" type="TextureButton" parent="Columns" unique_id=1527658172]
+offset_left = -44.0
+offset_top = -266.0
+offset_right = 45.0
+offset_bottom = 269.0
+texture_hover = ExtResource("2")
 
-[node name="Column_5" type="TextureButton" parent="Columns"]
-margin_left = 41.0
-margin_top = -268.0
-margin_right = 130.0
-margin_bottom = 267.0
-texture_hover = ExtResource( 2 )
+[node name="Column_5" type="TextureButton" parent="Columns" unique_id=211701923]
+offset_left = 42.0
+offset_top = -268.0
+offset_right = 131.0
+offset_bottom = 267.0
+texture_hover = ExtResource("2")
 
-[node name="Column_6" type="TextureButton" parent="Columns"]
-margin_left = 133.0
-margin_top = -270.0
-margin_right = 222.0
-margin_bottom = 265.0
-texture_hover = ExtResource( 2 )
+[node name="Column_6" type="TextureButton" parent="Columns" unique_id=1377583418]
+offset_left = 131.0
+offset_top = -269.0
+offset_right = 220.0
+offset_bottom = 266.0
+texture_hover = ExtResource("2")
 
-[node name="Column_7" type="TextureButton" parent="Columns"]
-margin_left = 220.0
-margin_top = -270.0
-margin_right = 309.0
-margin_bottom = 265.0
-texture_hover = ExtResource( 2 )
+[node name="Column_7" type="TextureButton" parent="Columns" unique_id=825568146]
+offset_left = 220.0
+offset_top = -265.0
+offset_right = 309.0
+offset_bottom = 270.0
+texture_hover = ExtResource("2")
 
-[node name="Grid" type="Node2D" parent="."]
-position = Vector2( -272, 224 )
+[node name="Grid" type="Node2D" parent="." unique_id=1089211251]
+position = Vector2(-272, 224)
 
-[node name="Grid_Row_1" type="Node2D" parent="Grid"]
+[node name="Grid_Row_1" type="Node2D" parent="Grid" unique_id=2080284777]
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=894515080]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=886665994]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=787949615]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=1089990887]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=314537506]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_1"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_1" unique_id=719891467]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_2" type="Node2D" parent="Grid"]
-position = Vector2( 90, 0 )
+[node name="Grid_Row_2" type="Node2D" parent="Grid" unique_id=180889931]
+position = Vector2(90, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=1254371746]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=631884678]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=964117250]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=1129407428]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=1611015928]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_2"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_2" unique_id=1764081159]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_3" type="Node2D" parent="Grid"]
-position = Vector2( 180, 0 )
+[node name="Grid_Row_3" type="Node2D" parent="Grid" unique_id=87362772]
+position = Vector2(180, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=1285443730]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=256003977]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=1673940426]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=207814260]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=1551859834]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_3"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_3" unique_id=2067752183]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_4" type="Node2D" parent="Grid"]
-position = Vector2( 270, 0 )
+[node name="Grid_Row_4" type="Node2D" parent="Grid" unique_id=2080326959]
+position = Vector2(270, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=2108449301]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=293913046]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=1581298413]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=988407205]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=1708077895]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_4"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_4" unique_id=213348336]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_5" type="Node2D" parent="Grid"]
-position = Vector2( 357, 0 )
+[node name="Grid_Row_5" type="Node2D" parent="Grid" unique_id=2020960964]
+position = Vector2(357, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=1425406732]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=711609447]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=526730956]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=1725584738]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=1640744871]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_5"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_5" unique_id=9277074]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_6" type="Node2D" parent="Grid"]
-position = Vector2( 447, 0 )
+[node name="Grid_Row_6" type="Node2D" parent="Grid" unique_id=1817329095]
+position = Vector2(447, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1104717312]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1663310701]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1744082448]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1841860546]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1636947831]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_6"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_6" unique_id=1996983910]
+position = Vector2(0, -445)
 
-[node name="Grid_Row_7" type="Node2D" parent="Grid"]
-position = Vector2( 535, 0 )
+[node name="Grid_Row_7" type="Node2D" parent="Grid" unique_id=1495279292]
+position = Vector2(535, 0)
 
-[node name="Slot_1" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 2, -2 )
+[node name="Slot_1" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=25761548]
+position = Vector2(2, -2)
 
-[node name="Slot_2" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 0, -91 )
+[node name="Slot_2" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=258931037]
+position = Vector2(0, -91)
 
-[node name="Slot_3" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 1, -177 )
+[node name="Slot_3" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=486166407]
+position = Vector2(1, -177)
 
-[node name="Slot_4" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 2, -267 )
+[node name="Slot_4" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=1146579351]
+position = Vector2(2, -267)
 
-[node name="Slot_5" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 2, -355 )
+[node name="Slot_5" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=1278757314]
+position = Vector2(2, -355)
 
-[node name="Slot_6" type="Position2D" parent="Grid/Grid_Row_7"]
-position = Vector2( 0, -445 )
+[node name="Slot_6" type="Marker2D" parent="Grid/Grid_Row_7" unique_id=237144930]
+position = Vector2(0, -445)
 
 [connection signal="pressed" from="Columns/Column_1" to="." method="_on_Column_1_pressed"]
 [connection signal="pressed" from="Columns/Column_2" to="." method="_on_Column_2_pressed"]
